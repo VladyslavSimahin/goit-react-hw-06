@@ -1,0 +1,11 @@
+.searchbar {
+  margin: 15px 0px;
+  width: 300px;
+  border: 2px solid rgb(255, 162, 0);
+}
+.searchtext {
+  margin: 0;
+}
+.searchdiv {
+  margin-top: 10px;
+}

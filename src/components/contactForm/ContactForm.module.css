@@ -1,0 +1,31 @@
+.form {
+  border: 1px solid red;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+.inputfield {
+  padding: 8px 0px;
+  margin-left: 15px;
+}
+.submitbutton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 120px;
+  margin: 10px auto;
+}
+
+.label {
+  margin: 10px 15px;
+}
+
+.required {
+  color: red;
+  text-align: center;
+  margin: 10px auto;
+}

@@ -1,0 +1,15 @@
+.box {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+.button {
+  margin-left: auto;
+  margin-right: 15px;
+  width: 65px;
+}
+
+.card {
+  margin-right: auto;
+  margin-left: 10px;
+}
