@@ -1,21 +1,15 @@
-import { nanoid } from "nanoid";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-
-import { useId } from "react";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
 import css from "./ContactForm.module.css";
-export const ContactForm = ({ onAdd }) => {
-  const username = useId();
-  const numberID = useId();
+import { nanoid } from "nanoid";
 
-  const handleSubmite = (values, actions) => {
-    onAdd({
-      id: nanoid(),
-      name: values.name,
-      number: values.number,
-    });
-    actions.resetForm();
-  };
+export const ContactForm = () => {
+  const dispatch = useDispatch();
+  const nameFieldId = nanoid();
+  const numberFieldId = nanoid();
+
   const validationSchema = Yup.object().shape({
     name: Yup.string()
       .min(3, "Too Short!")
@@ -26,6 +20,15 @@ export const ContactForm = ({ onAdd }) => {
       .max(50, "Too Long!")
       .required("Required"),
   });
+  const handleSubmit = (values, actions) => {
+    const contact = {
+      id: nanoid(),
+      name: values.name,
+      number: values.number,
+    };
+    dispatch(addContact(contact));
+    actions.resetForm();
+  };
 
   return (
     <div>
@@ -34,20 +37,32 @@ export const ContactForm = ({ onAdd }) => {
           name: "",
           number: "",
         }}
-        onSubmit={handleSubmite}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <Form className={css.form}>
-          <label htmlFor={username} className={css.inputfield}>
+          <label htmlFor="name" className={css.inputfield}>
             Name
           </label>
-          <Field type="text" name="name" id={username} className={css.label} />
+          <Field
+            type="text"
+            name="name"
+            id="name"
+            className={css.label}
+            autoComplete="off"
+          />
 
           <ErrorMessage name="name" component="div" className={css.required} />
-          <label htmlFor={numberID} className={css.inputfield}>
+          <label htmlFor="number" className={css.inputfield}>
             Number
           </label>
-          <Field type="tel" name="number" id={numberID} className={css.label} />
+          <Field
+            type="tel"
+            name="number"
+            id="number"
+            className={css.label}
+            autoComplete="off"
+          />
           <ErrorMessage
             name="number"
             component="div"
