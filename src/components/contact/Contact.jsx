@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contactsSlice";
 import css from "./Contact.module.css";
-export const Contact = ({ name, number, id }) => {
+export const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
-    dispatch(deleteContact({ id }));
+    dispatch(deleteContact(id));
   };
   return (
     <div className={css.box}>
